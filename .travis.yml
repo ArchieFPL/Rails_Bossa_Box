@@ -3,10 +3,7 @@ rvm:
 - 2.7.2
 
 services:
- - docker
-
-before_install:
- - docker-compose up --build
+ - postgresql
 
 script:
  — bundle install — jobs=3 — retry=3
