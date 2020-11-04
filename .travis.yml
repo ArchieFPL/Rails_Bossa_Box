@@ -6,8 +6,16 @@ services:
  - postgresql
 
 script:
+<<<<<<< HEAD
+ - bundle install — jobs=3 — retry=3
+ - bundle exec rake db:create
+ - bundle exec rake db:migrate
+ - bundle exec rspec
+ - bundle exec rubocop
+=======
  — bundle install — jobs=3 — retry=3
  — bundle exec rake db:create
  — bundle exec rake db:migrate
  — bundle exec rspec
  — bundle exec rubocop
+>>>>>>> 4a6dbaecfee9fd23c8dd6e2284d592b22d38c122
