@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Comment
+# Exception Handler: Return error messages in case of not found and invalid
 module ExceptionHandler
   # provides the more graceful `included` method
   extend ActiveSupport::Concern
