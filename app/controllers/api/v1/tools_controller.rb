@@ -8,13 +8,15 @@ module Api
 
       # GET /tools
       def index
-        @tools = Tool.all
+        # get current user tools
+        @tools = current_user.tools
         json_response(@tools)
       end
 
       # POST /tools
       def create
-        @tool = Tool.create!(tool_params)
+        # create tools belonnging to current user
+        @tool = current_user.tools.create!(tool_params)
         json_response(@tool, :created)
       end
 
@@ -39,7 +41,7 @@ module Api
 
       def tool_params
         # whitelist params
-        params.permit(:title, :link, :description, :created_by, tags: [])
+        params.permit(:title, :link, :description, tags: [])
       end
 
       def set_tool
