@@ -61,7 +61,7 @@ RSpec.describe 'Todos API', type: :request do
   describe 'POST /tools' do
     # valid payload
     let(:valid_attributes) do
-      { title: 'N', link: 'http', description: 'nice', tags: %w[organization planning], created_by: user.id.to_s }.to_json 
+      { title: 'N', link: 'http', description: 'nice', tags: %w[organization planning], created_by: user.id.to_s }.to_json
     end
 
     context 'when the request is valid' do
@@ -77,7 +77,7 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'when the request is invalid' do
-      let(:invalid_attributes) { { title: nil, description: "descrition", link: "link", tags: ["tag"] }.to_json }
+      let(:invalid_attributes) { { title: nil, description: 'descrition', link: 'link', tags: ['tag'] }.to_json }
       before { post '/api/v1/tools', params: invalid_attributes, headers: headers }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -95,7 +95,7 @@ RSpec.describe 'Todos API', type: :request do
     let(:valid_attributes) { { title: 'Shopping' }.to_json }
 
     context 'when the record exists' do
-      before { put "/api/v1/tools/#{tool_id}", params: valid_attributes, headers: headers}
+      before { put "/api/v1/tools/#{tool_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).to be_empty
