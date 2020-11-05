@@ -8,8 +8,8 @@ module Api
 
       # GET /tools
       def index
-        # get current user tools
-        @tools = current_user.tools
+        # get paginated current user tools
+        @tools = current_user.tools.paginate(page: params[:page], per_page:20)
         json_response(@tools)
       end
 
