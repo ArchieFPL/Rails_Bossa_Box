@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Api developed for the BossaBox backend challenge.
 
-Things you may want to cover:
+## Ruby Version
+2.7.2
 
-* Ruby version
+## Starting the project
+Both postgres and the API are in the docker-compose, just follow the instructions below to be able to run the app.
 
-* System dependencies
+```sh
+docker-compose build
+```
 
-* Configuration
+```sh
+docker-compose run web bundle exec rails db:create
+```
 
-* Database creation
+```sh
+docker-compose run web bundle exec rails db:migrate
+```
+```sh
+docker-compose up --build
+```
 
-* Database initialization
+The API is on port 3000
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Test
+To run the tests just run the following command
+```sh
+docker-compose run web bundle exec rspec
+```
+## Documentation
