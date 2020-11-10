@@ -2,8 +2,7 @@
 
 # spec/requests/tool_spec.rb
 
-require 'rails_helper'
-
+require 'swagger_helper'
 RSpec.describe 'Todos API', type: :request do
   # add todos owner
   let(:user) { create(:user) }
