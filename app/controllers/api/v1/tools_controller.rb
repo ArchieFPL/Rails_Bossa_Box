@@ -25,6 +25,12 @@ module Api
         json_response(@tool)
       end
 
+      # GET /tools/tags/:tags
+      def tags
+        @tool = Tool.tagged(params[:tags])
+        json_response(@tool)
+      end
+
       # PUT /tools/:id
       def update
         @tool.update(tool_params)

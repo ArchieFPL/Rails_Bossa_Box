@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'auth/login', to: 'authentication#authenticate'
       post 'signup', to: 'users#create'
+      post '/tools/tags/', to: 'tools#tags'
       resources :tools
     end
   end

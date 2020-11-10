@@ -170,6 +170,35 @@ paths:
         '404':
           description: tool not found
           content: {}
+  "/api/v1/tools/tags":
+    post:
+      summary: List tool by tag
+      tags:
+      - Tools
+      parameters:
+      - in: header
+        name: Authorization
+        required: true
+        description: Client Token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: tool found
+          content: {}
+        '404':
+          description: tool not found
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  type: string
+              required:
+              - tags
   "/api/v1/signup":
     post:
       summary: Creates a user

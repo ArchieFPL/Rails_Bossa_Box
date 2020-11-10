@@ -15,7 +15,7 @@ describe 'Tools API' do
                 })
 
       response '200', 'list tools' do
-        let(:Authorization) { valid_headers } 
+        let(:Authorization) { valid_headers }
         run_test!
       end
 
@@ -81,6 +81,38 @@ describe 'Tools API' do
                   description: 'Client Token'
                 })
       parameter name: :id, in: :path, type: :integer
+
+      response '200', 'tool found' do
+        let(:Authorization) { valid_headers }
+        run_test!
+      end
+
+      response '404', 'tool not found' do
+        let(:Authorization) { invalid_headers }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/tools/tags' do
+    post 'List tool by tag' do
+      tags 'Tools'
+      consumes 'application/json'
+      produces 'application/json'
+      parameter({
+                  in: :header,
+                  type: :string,
+                  name: :Authorization,
+                  required: true,
+                  description: 'Client Token'
+                })
+      parameter name: :tool, in: :body, schema: {
+        type: :object,
+        properties: {
+            tags: { type: :string  }
+          },
+        required: %w[tags]
+      }
 
       response '200', 'tool found' do
         let(:Authorization) { valid_headers }
